@@ -1,12 +1,12 @@
 "use strict";
 
-const express = require("express");
+var express = require("express");
 const bodyParser = require("body-parser");
 const cheerio = require('cheerio');
 var request = require('request');
 var fs = require('fs');
 
-const restService = express();
+var restService = express();
 
 restService.use(
   bodyParser.urlencoded({
@@ -23,8 +23,7 @@ restService.post("/echo", function(req, res) {
     request(url,function(err,resp,body){
 	var $ = cheerio.load(body);
 	var details = $('.card__media-overlapping__text');
-	var fulfillmentText = details.text() ? req.body.queryResult.parameters.echoText
-      : "Seems like some problem. Speak again.";
+	var fulfillmentText = details.text();
 
   return res.json({
     fulfillmentText: fulfillmentText,
