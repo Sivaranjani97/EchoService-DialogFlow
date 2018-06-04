@@ -20,7 +20,7 @@ restService.use(bodyParser.json());
 
 restService.post("/echo", function(req, res) {
 	var url = "https://www.capgemini.com/our-company/"
-    request(url,function(err,resp,body){
+    request(url,function(err,res,body){
 	var $ = cheerio.load(body);
 	var details = $('.card__media-overlapping__text');
 	var fulfillmentText = details.text();
