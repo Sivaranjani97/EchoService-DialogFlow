@@ -19,7 +19,7 @@ var url = "https://www.capgemini.com/our-company/"
 request(url,function(err,resp,body){
 	var $ = cheerio.load(body);
 	var details = $('.card__media-overlapping__text');
-	var fulfillmentText = details.text();
+	global.fulfillmentText = details.text();
 	//console.log(detailstext);
 });
 
