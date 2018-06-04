@@ -9,8 +9,8 @@
   "author": "Sivaranjani",
   "dependencies": {
     "body-parser": "^1.15.0",
-    "express": "^4.13.4"
-    "cheerio": "latest"
-    "request": "latest"
+    "express": "^4.16.3"
+    "cheerio": "^1.0.0-rc.2"
+    "request": "^2.87.0"
   }
 }
