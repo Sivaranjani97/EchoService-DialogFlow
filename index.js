@@ -1,12 +1,11 @@
 "use strict";
 
 var express = require("express");
+var restService = express();
 const bodyParser = require("body-parser");
 const cheerio = require('cheerio');
 var request = require('request');
 var fs = require('fs');
-
-var restService = express();
 
 restService.use(
   bodyParser.urlencoded({
@@ -16,15 +15,21 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-//scrapping
-
-restService.post("/echo", function(req, res) {
-	var url = "https://www.capgemini.com/our-company/"
-    request(url,function(err,res,body){
+var url = "https://www.capgemini.com/our-company/"
+request(url,function(err,resp,body){
 	var $ = cheerio.load(body);
 	var details = $('.card__media-overlapping__text');
 	var fulfillmentText = details.text();
+	//console.log(detailstext);
+});
 
+restService.post("/echo", function(req, res) {
+  // var fulfillmentText =
+  //   req.body.queryResult &&
+  //   req.body.queryResult.parameters &&
+  //   req.body.queryResult.parameters.echoText
+  //     ? req.body.queryResult.parameters.echoText
+  //     : "Seems like some problem. Speak again.";
   return res.json({
     fulfillmentText: fulfillmentText,
     //displayText: fulfillmentText,
