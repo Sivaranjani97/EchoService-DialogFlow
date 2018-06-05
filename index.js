@@ -15,16 +15,17 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-var url = "https://www.capgemini.com/our-company/"
-request(url,function(err,resp,body){
+
+
+restService.post("/echo", function(req, res) {
+	var url = "https://www.capgemini.com/our-company/"
+         request(url,function(err,resp,body){
 	var $ = cheerio.load(body);
 	 global.fulfillmentText = req.body.queryResult.intent.displayName;
          var details = $('.card__media-overlapping__text');
          //global.fulfillmentText = details.text() + intentName;
 	//console.log(detailstext);
 });
-
-restService.post("/echo", function(req, res) {
   // var fulfillmentText =
   //   req.body.queryResult &&
   //   req.body.queryResult.parameters &&
