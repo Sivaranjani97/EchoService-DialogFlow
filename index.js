@@ -15,11 +15,10 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-
 restService.post("/echo", function(req, res) {
   var intentName = req.body.queryResult.intent.displayName;
 
-  if(String(intentName) == "Echo"){
+  if(intentName == "Echo"){
   var url = "https://www.capgemini.com/our-company/"
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
@@ -32,8 +31,8 @@ restService.post("/echo", function(req, res) {
     fulfillmentText: fulfillmentText,
     source: "webhook-echo-sample"
   });
-});
 }
+});
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
