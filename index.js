@@ -18,11 +18,11 @@ restService.use(bodyParser.json());
 
 
 restService.post("/echo", function(req, res) {
+        global.fulfillmentText = req.body.queryResult.intent.displayName;
 	var url = "https://www.capgemini.com/our-company/"
          request(url,function(err,resp,body){
-	var $ = cheerio.load(body);
-	 global.fulfillmentText = req.body.queryResult.intent.displayName;
-         var details = $('.card__media-overlapping__text');
+	    var $ = cheerio.load(body);
+	    var details = $('.card__media-overlapping__text');
          //global.fulfillmentText = details.text() + intentName;
 	//console.log(detailstext);
 });
