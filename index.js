@@ -17,9 +17,9 @@ restService.use(bodyParser.json());
 
 
 restService.post("/echo", function(req, res) {
-  global.intentName = req.body.queryResult.intent.displayName;
+  var intentName = req.body.queryResult.intent.displayName;
 
-  if(intentName =="Echo"){
+  if(String(intentName) == "Echo"){
   var url = "https://www.capgemini.com/our-company/"
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
@@ -34,6 +34,7 @@ restService.post("/echo", function(req, res) {
   });
 });
 }
+
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
 });
