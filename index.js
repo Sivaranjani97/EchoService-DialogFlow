@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const cheerio = require('cheerio');
 var request = require('request');
 var fs = require('fs');
+var fulfillmentText = null;
 
 restService.use(
   bodyParser.urlencoded({
@@ -24,7 +25,7 @@ restService.post("/echo", function(req, res) {
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.card__media-overlapping__text');
-    global.fulfillmentText = details.text() ;
+    fulfillmentText = details.text() ;
   
 });
   
@@ -40,22 +41,18 @@ else (intentName == "GooglePartner")
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.component__hero-inset--intro');
-    global.fulfillmentText = details.text() ;
+    fulfillmentText = details.text() ;
 
   
 });
-}
+
   
   return res.json({
     fulfillmentText: fulfillmentText,
     source: "webhook-echo-sample"
   });
 
-
-
-
-
-});
+}
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
