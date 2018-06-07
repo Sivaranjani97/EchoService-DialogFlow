@@ -24,7 +24,7 @@ restService.post("/echo", function(req, res) {
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.card__media-overlapping__text');
-    var fulfillmentText = details.text() ;
+    global.fulfillmentText = details.text() ;
   
 });
   
@@ -34,23 +34,23 @@ restService.post("/echo", function(req, res) {
   });
 }
 
-else if(intentName == "GooglePartner")
+else (intentName == "GooglePartner")
 {
     var url = "https://www.capgemini.com/partner/google-cloud/"
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.component__hero-inset--intro');
-    var fulfillmentText = details.text() ;
+    global.fulfillmentText = details.text() ;
 
   
 });
-
+}
   
   return res.json({
     fulfillmentText: fulfillmentText,
     source: "webhook-echo-sample"
   });
-}
+
 
 
 
