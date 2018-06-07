@@ -17,7 +17,7 @@ restService.use(bodyParser.json());
 
 
 restService.post("/echo", function(req, res) {
-   var intentName = req.body.queryResult && req.body.queryResult.intent &&req.body.queryResult.intent.displayName;
+   var intentName = req.body.queryResult.intent.displayName;
 
   if(intentName == "AnnualReport"){
   var url = "https://www.capgemini.com/our-company/"
