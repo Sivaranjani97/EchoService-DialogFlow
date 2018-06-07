@@ -24,7 +24,7 @@ restService.post("/echo", function(req, res) {
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.card__media-overlapping__text');
-    global.fulfillmentText = details.text() ;
+    var fulfillmentText = details.text() ;
   
 });
   
