@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cheerio = require('cheerio');
 var request = require('request');
 var fs = require('fs');
-var restext;
+var restext = '';
 
 restService.use(
   bodyParser.urlencoded({
