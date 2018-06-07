@@ -24,7 +24,7 @@ restService.post("/echo", function(req, res) {
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.card__media-overlapping__text');
-    var fulfillmentText = details.text() ;
+    global.fulfillmentText = details.text() ;
   
 });
   
@@ -34,17 +34,17 @@ restService.post("/echo", function(req, res) {
   });
 }
 
-else (intentName == "GooglePartner")
+else if(intentName == "GooglePartner")
 {
     var url = "https://www.capgemini.com/partner/google-cloud/"
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.component__hero-inset--intro');
-    global.fulfillmentText = details.text() ;
+    var fulfillmentText = details.text() ;
 
   
 });
-}
+
   
   return res.json({
     fulfillmentText: fulfillmentText,
@@ -55,7 +55,7 @@ else (intentName == "GooglePartner")
 
 
 
-});
+}
 
 restService.listen(process.env.PORT || 8000, function() {
   console.log("Server up and listening");
