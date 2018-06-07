@@ -17,7 +17,7 @@ restService.use(bodyParser.json());
 
 
 restService.post("/echo", function(req, res) {
-   var intentName = req.body.queryResult.intent.displayName;
+  var intentName = req.body.queryResult.intent.displayName;
 
   if(intentName == "AnnualReport"){
   var url = "https://www.capgemini.com/our-company/"
@@ -34,7 +34,7 @@ restService.post("/echo", function(req, res) {
   });
 }
 
-else if(intentName == "GooglePartner")
+else (intentName == "GooglePartner")
 {
     var url = "https://www.capgemini.com/partner/google-cloud/"
   request(url,function(err,resp,body){
@@ -50,12 +50,11 @@ else if(intentName == "GooglePartner")
     fulfillmentText: fulfillmentText,
     source: "webhook-echo-sample"
   });
-
-
-
-
-
 }
+
+
+
+
 });
 
 restService.listen(process.env.PORT || 8000, function() {
