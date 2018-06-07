@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cheerio = require('cheerio');
 var request = require('request');
 var fs = require('fs');
-var fulfillmentText;
+var restext;
 
 restService.use(
   bodyParser.urlencoded({
@@ -25,12 +25,12 @@ restService.post("/echo", function(req, res) {
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.card__media-overlapping__text');
-    fulfillmentText = details.text() ;
+    restext = details.text() ;
   
 });
   
   return res.json({
-    fulfillmentText: intentName,
+    fulfillmentText: restext,
     source: "webhook-echo-sample"
   });
 }
@@ -41,14 +41,14 @@ else if(intentName == "GooglePartner")
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
     var details = $('.component__hero-inset--intro');
-    fulfillmentText = details.text() ;
+    restext = details.text() ;
 
   
 });
 
   
   return res.json({
-    fulfillmentText: intentName,
+    fulfillmentText: restext,
     source: "webhook-echo-sample"
   });
 
