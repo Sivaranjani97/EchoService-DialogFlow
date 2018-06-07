@@ -34,7 +34,7 @@ restService.post("/echo", function(req, res) {
   });
 }
 
-else (intentName == "GooglePartner")
+else if(intentName == "GooglePartner")
 {
     var url = "https://www.capgemini.com/partner/google-cloud/"
   request(url,function(err,resp,body){
@@ -44,14 +44,14 @@ else (intentName == "GooglePartner")
 
   
 });
-}
+
   
   return res.json({
     fulfillmentText: fulfillmentText,
     source: "webhook-echo-sample"
   });
 
-
+}
 
 
 
