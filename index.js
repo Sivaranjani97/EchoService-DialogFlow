@@ -19,7 +19,7 @@ restService.use(bodyParser.json());
 restService.post("/echo", function(req, res) {
    var intentName = req.body.queryResult && req.body.queryResult.intent &&req.body.queryResult.intent.displayName;
 
-  if(intentName.toString() == "AnnualReport"){
+  if(intentName == "AnnualReport"){
   var url = "https://www.capgemini.com/our-company/"
   request(url,function(err,resp,body){
     var $ = cheerio.load(body);
@@ -34,7 +34,7 @@ restService.post("/echo", function(req, res) {
   });
 }
 
-else if(intentName.toString() == "GooglePartner")
+else if(intentName == "GooglePartner")
 {
     var url = "https://www.capgemini.com/partner/google-cloud/"
   request(url,function(err,resp,body){
