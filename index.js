@@ -30,7 +30,7 @@ restService.post("/echo", function(req, res) {
 });
   
   return res.json({
-    fulfillmentText: fulfillmentText,
+    fulfillmentText: intentName,
     source: "webhook-echo-sample"
   });
 }
@@ -48,7 +48,7 @@ else if(intentName == "GooglePartner")
 
   
   return res.json({
-    fulfillmentText: fulfillmentText,
+    fulfillmentText: intentName,
     source: "webhook-echo-sample"
   });
 
